@@ -44,6 +44,8 @@ $generalParams = array(
 );
 
 if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
+    ?>
+    <div class="form-row"><div class="col-12 col-md-6 col-lg-4 col-xl-3"><div class="form-row h-100"><?php
     $areaIds = array();
 
     foreach ($arResult['ITEMS'] as $item) {
@@ -53,7 +55,7 @@ if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
         $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
     }
 
-    foreach ($arResult['ITEMS'] as $item) {
+    foreach ($arResult['ITEMS'] as $key => $item) {
         $APPLICATION->IncludeComponent(
             'bitrix:catalog.item',
             '',
@@ -67,13 +69,14 @@ if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
             $component,
             array('HIDE_ICONS' => 'Y')
         );
+        if (++$key % 2 === 0) {
+            ?></div></div><div class="col-12 col-md-6 col-lg-4 col-xl-3"><div class="form-row h-100"><?
+        }
     }
+    ?></div></div></div><?
 }
 
-if ($showBottomPager) {
-    ?>
-    <div class="col-24 my-3 text-center" data-pagination-num="<?=$navParams['NavNum']?>">
-        <?=$arResult['NAV_STRING']?>
-    </div>
-    <?
-}
+?>
+<div class="my-3 text-center" data-pagination-num="<?= $navParams['NavNum'] ?>">
+    <?= $arResult['NAV_STRING'] ?>
+</div>

@@ -27,6 +27,7 @@ function quantity_oninput() {
 
 function zoomImage(key, src) {
     document.getElementById('imageid').src=src;
+    document.getElementById('bigimagea').href=src;
     for (let item of document.getElementsByClassName('gelleryimg')) {
         if (item.id === 'img'+key) {
             item.classList.add('border-primary');

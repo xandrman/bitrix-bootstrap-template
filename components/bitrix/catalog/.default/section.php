@@ -40,8 +40,6 @@ $APPLICATION->IncludeComponent(
     array("HIDE_ICONS" => "Y")
 );
 
-?><div class="col-24 mb-3"></div><?
-
 $APPLICATION->IncludeComponent(
     "bitrix:catalog.section",
     "",

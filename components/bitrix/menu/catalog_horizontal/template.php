@@ -26,24 +26,19 @@ $menuBlockId = "catalog_menu_" . $this->randString();
             <? if (is_array($arColumns) && count($arColumns) > 0): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="<?= $arResult["ALL_ITEMS"][$itemID]["LINK"] ?>"
-                       id="navbarDropdownMenuLink"
+                       id="navbarDropdownMenuLink<?= $itemID ?>"
                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?= $arResult["ALL_ITEMS"][$itemID]["TEXT"] ?>
                     </a>
 
-                    <div class="dropdown-menu border-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-menu border-primary"
+                         aria-labelledby="navbarDropdownMenuLink<?= $itemID ?>">
                         <? foreach ($arColumns as $key => $arRow): ?>
                             <? foreach ($arRow as $itemIdLevel_2 => $arLevel_3): ?>
                                 <a class="dropdown-item"
                                    href="<?= $arResult["ALL_ITEMS"][$itemIdLevel_2]["LINK"] . '?newdesign=1' ?>">
                                     <?= $arResult["ALL_ITEMS"][$itemIdLevel_2]["TEXT"] ?>
                                 </a>
-
-<!--                                --><?// if (is_array($arLevel_3) && count($arLevel_3) > 0): ?>
-<!--                                -->
-<!--                                --><?// else: ?>
-<!--                                    -->
-<!--                                --><?// endif ?>
                             <? endforeach ?>
                         <? endforeach ?>
                     </div>

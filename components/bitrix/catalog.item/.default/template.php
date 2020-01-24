@@ -3,7 +3,7 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="col-24 col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+<div class="col-12 col-sm-6 mb-2">
     <div class="h-100 border rounded d-flex flex-sm-column">
         <a href="<?= $arResult['ITEM']['DETAIL_PAGE_URL'] ?>" class="text-body w-100">
             <img data-original="<?= $arResult['ITEM']['PREVIEW_PICTURE']['SRC'] ?: (SITE_TEMPLATE_PATH . '/img/nophoto.png') ?>"

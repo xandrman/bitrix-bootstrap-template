@@ -11,7 +11,7 @@ use Bitrix\Main\Page\Asset; ?>
     <?
     $APPLICATION->ShowHead();
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/bootstrap_2020-01-21.min.css');
-    Asset::getInstance()->addCss("/bitrix/css/main/font-awesome.css");
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/font-awesome.min.css');
     ?>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <style>
@@ -38,13 +38,14 @@ use Bitrix\Main\Page\Asset; ?>
         }
     </style>
 </head>
-<body class="container-fluid">
+<body class="container-fluid bg-secondary">
+
 <div class="row">
     <div class="col-12 p-0">
         <? $APPLICATION->ShowPanel() ?>
     </div>
 </div>
-<header class="row align-items-center justify-content-around my-3 bg-white">
+<header class="row align-items-center justify-content-around py-2 bg-white">
     <div class="col-auto my-2">
         <a href="<?= htmlspecialcharsbx(SITE_DIR) ?>">
             <img src="/include/logo_retina.png" style="width: 10em;" alt="">
@@ -62,7 +63,7 @@ use Bitrix\Main\Page\Asset; ?>
             ><span class="ml-2"></span>8&nbsp;(3812)&nbsp;633-210
         </a>
     </div>
-    <div class="col-12 col-lg order-last order-lg-2 my-2 rounded ">
+    <div class="col-12 col-lg order-last order-lg-2 my-2">
         <? $APPLICATION->IncludeComponent("bitrix:search.title", 'visual', array(
             "NUM_CATEGORIES" => "1",
             "TOP_COUNT" => "5",
@@ -108,41 +109,43 @@ use Bitrix\Main\Page\Asset; ?>
         ); ?>
     </div>
 </header>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm rounded">
-    <? $APPLICATION->IncludeComponent("bitrix:menu", "catalog_horizontal", array(
-        "ROOT_MENU_TYPE" => "left",
-        "MENU_CACHE_TYPE" => "A",
-        "MENU_CACHE_TIME" => "36000000",
-        "MENU_CACHE_USE_GROUPS" => "Y",
-        "MENU_THEME" => "site",
-        "CACHE_SELECTED_ITEMS" => "N",
-        "MENU_CACHE_GET_VARS" => array(),
-        "MAX_LEVEL" => "3",
-        "CHILD_MENU_TYPE" => "left",
-        "USE_EXT" => "Y",
-        "DELAY" => "N",
-        "ALLOW_MULTI_SELECT" => "N",
-    ),
-        false
-    ); ?>
+<nav class="row">
+    <div class="col-12 navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <? $APPLICATION->IncludeComponent("bitrix:menu", "catalog_horizontal", array(
+            "ROOT_MENU_TYPE" => "left",
+            "MENU_CACHE_TYPE" => "A",
+            "MENU_CACHE_TIME" => "36000000",
+            "MENU_CACHE_USE_GROUPS" => "Y",
+            "MENU_THEME" => "site",
+            "CACHE_SELECTED_ITEMS" => "N",
+            "MENU_CACHE_GET_VARS" => array(),
+            "MAX_LEVEL" => "3",
+            "CHILD_MENU_TYPE" => "left",
+            "USE_EXT" => "Y",
+            "DELAY" => "N",
+            "ALLOW_MULTI_SELECT" => "N",
+        ),
+            false
+        ); ?>
+    </div>
 </nav>
-
 <?
 if ($USER->IsAdmin()) {
     ?>
-        <div class="bg-dark rounded mt-3 text-white py-3 px-2">
-            <span class="mx-1"><small>Операторам:</small></span>
-            <a href="/operators" class="mx-1 text-white ">Товары</a>
-            <a href="/operators/orders" class="mx-1 text-white ">Заказы</a>
+    <div class="row">
+        <div class="col-12 bg-light border-bottom border-top py-3">
+            <span class="mx-1">Операторам:</span>
+            <a href="/operators" class="mx-1">Товары</a>
+            <a href="/operators/orders" class="mx-1">Заказы</a>
         </div>
+    </div>
     <?
 }
 ?>
 
 
-<main class="row bg-white">
-    <div class="col-12 my-3">
+<main class="row bg-white py-4">
+    <div class="col-12">
         <? if ($APPLICATION->GetCurPage(true) != SITE_DIR . "index.php") : ?>
             <? $APPLICATION->IncludeComponent(
                 "bitrix:breadcrumb", "", [
