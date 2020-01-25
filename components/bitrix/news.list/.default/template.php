@@ -26,9 +26,10 @@ $this->setFrameMode(true);
                         <div class="form-row align-items-center">
                             <div class="col-5">
                                 <div class="p-1">
-                                    <img src="<?= $arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?>"
+                                    <img src="<?= SITE_TEMPLATE_PATH . '/img/transparent.gif' ?>"
+                                         data-original="<?= $arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?>"
                                          alt="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>"
-                                         class="rounded w-100">
+                                         class="lazy rounded w-100">
                                 </div>
 
                             </div>
@@ -63,7 +64,8 @@ $this->setFrameMode(true);
                     <div class="form-row align-items-center">
                         <div class="col-5">
                             <div class="p-1">
-                                <img src="<?= $arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH . '/img/transparent.gif' ?>"
+                                     data-original="<?= $arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?>"
                                      alt="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>"
                                      class="rounded w-100">
                             </div>
