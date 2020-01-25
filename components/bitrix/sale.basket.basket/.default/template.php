@@ -2,8 +2,6 @@
 
 use Bitrix\Main\Localization\Loc;
 
-var_dump($arResult);
-
 ?>
 
 <ul class="list-group list-group-flush" id="basket">
