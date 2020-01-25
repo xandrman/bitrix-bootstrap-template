@@ -44,9 +44,9 @@ function processBasket() {
             result.DELETED_BASKET_ITEMS.forEach(function (deleted) {
                 BX(deleted.toString()).remove();
             });
-            console.log(result.BASKET_DATA.GRID.ROWS);
             Object.values(result.BASKET_DATA.GRID.ROWS).forEach(function (one) {
-                BX.adjust(BX('SUM_FULL_PRICE_FORMATED_' + one.ID), {html: one.SUM_FULL_PRICE_FORMATED});
+                BX.adjust(BX('SUM_FULL_PRICE_FORMATED_' + one.ID), {html: one.SUM});
+                BX('QUANTITY_' + one.ID).value = one.QUANTITY;
             });
             BX.adjust(BX('allSum_FORMATED'), {html: result.BASKET_DATA.allSum_FORMATED});
         }

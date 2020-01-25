@@ -2,6 +2,8 @@
 
 use Bitrix\Main\Localization\Loc;
 
+var_dump($arResult);
+
 ?>
 
 <ul class="list-group list-group-flush" id="basket">
@@ -49,7 +51,7 @@ use Bitrix\Main\Localization\Loc;
                 </div>
                 <div class="col-12 col-sm col-md-2 text-right mb-2 mb-md-0"
                      id="SUM_FULL_PRICE_FORMATED_<?= $arItem["ID"] ?>">
-                    <?= $arItem["SUM_FULL_PRICE_FORMATED"] ?>
+                    <?= $arItem["SUM"] ?>
                 </div>
             </div>
         </li>
