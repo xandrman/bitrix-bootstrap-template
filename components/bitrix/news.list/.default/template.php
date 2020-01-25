@@ -67,7 +67,7 @@ $this->setFrameMode(true);
                                 <img src="<?= SITE_TEMPLATE_PATH . '/img/transparent.gif' ?>"
                                      data-original="<?= $arItem["PREVIEW_PICTURE"]["SAFE_SRC"] ?>"
                                      alt="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>"
-                                     class="rounded w-100">
+                                     class="lazy rounded w-100">
                             </div>
 
                         </div>
