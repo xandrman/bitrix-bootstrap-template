@@ -36,7 +36,7 @@ $menuBlockId = "catalog_menu_" . $this->randString();
                         <? foreach ($arColumns as $key => $arRow): ?>
                             <? foreach ($arRow as $itemIdLevel_2 => $arLevel_3): ?>
                                 <a class="dropdown-item"
-                                   href="<?= $arResult["ALL_ITEMS"][$itemIdLevel_2]["LINK"] . '?newdesign=1' ?>">
+                                   href="<?= $arResult["ALL_ITEMS"][$itemIdLevel_2]["LINK"] ?>">
                                     <?= $arResult["ALL_ITEMS"][$itemIdLevel_2]["TEXT"] ?>
                                 </a>
                             <? endforeach ?>
