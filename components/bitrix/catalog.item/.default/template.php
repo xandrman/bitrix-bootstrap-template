@@ -1,6 +1,10 @@
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 $this->setFrameMode(true);
+
+$intprice = intval($arResult['ITEM']['ITEM_PRICES'][0]['PRICE']);
+$fracprice = ((($arResult['ITEM']['ITEM_PRICES'][0]['PRICE'] - $intprice) * 100) ?: '00');
+
 ?>
 
 <div class="col-12 col-sm-6 mb-2">
@@ -20,7 +24,7 @@ $this->setFrameMode(true);
                 <? else :?>
                     <div class="d-flex justify-content-between align-items-center mt-0 mt-sm-2">
                         <span class="font-weight-bold font-italic ml-1">
-                            <?= $arResult['ITEM']['ITEM_PRICES'][0]['BASE_PRICE'] ?> р.
+                            <span><?= $intprice ?></span><small>,<?= $fracprice ?> р.</small>
                         </span>
                         <? $href = str_replace('#ID#', $arResult['ITEM']['ID'], $arParams['~ADD_URL_TEMPLATE']) ?>
                         <a class="btn btn-sm btn-primary" href="<?= $href ?>" rel="nofollow">
