@@ -1,6 +1,6 @@
 <?
 $arTemplate = array (
-  'NAME' => '101motok.ru',
+  'NAME' => 'new.101motok.ru',
   'DESCRIPTION' => '',
   'SORT' => '',
   'TYPE' => '',

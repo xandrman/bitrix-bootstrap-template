@@ -109,10 +109,13 @@
         </div>
         <div class="col-12 col-sm-auto text-center">
             <div class="my-2">
-                <a href="https://webmaster.yandex.ru/sqi?host=101motok.ru">
-                    <img width="88" height="31" alt="" border="0"
-                         src="https://yandex.ru/cycounter?101motok.ru&theme=dark&lang=ru"/>
-                </a>
+                <?
+                $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR . "include/yandexmetrika.php"),
+                    false);
+                ?>
             </div>
         </div>
         <div class="col-12 col-sm-auto text-center py-2">
