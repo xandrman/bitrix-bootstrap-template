@@ -24,7 +24,7 @@ $fracprice = ((($arResult['ITEM']['ITEM_PRICES'][0]['PRICE'] - $intprice) * 100)
                 <? else :?>
                     <div class="d-flex justify-content-between align-items-center mt-0 mt-sm-2">
                         <span class="font-weight-bold font-italic ml-1">
-                            <span><?= $intprice ?></span><small>,<?= $fracprice ?> р.</small>
+                            <span><?= $intprice ?></span><small><small>,<?= $fracprice ?> р.</small></small>
                         </span>
                         <? $href = str_replace('#ID#', $arResult['ITEM']['ID'], $arParams['~ADD_URL_TEMPLATE']) ?>
                         <a class="btn btn-sm btn-primary" href="<?= $href ?>" rel="nofollow">
