@@ -10,7 +10,7 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
 <div itemscope itemtype="http://schema.org/Product" class="form-row">
     <div class="col-12 col-md-6">
         <div class="form-row">
-            <div class="col-12 col-md-6 mb-2">
+            <div class="col-12 col-lg-6 mb-2">
                 <a href="<?= $arResult['MORE_PHOTO'][0]['SRC'] ?: '#' ?>" class="d-block border rounded" id="bigimagea">
                     <img itemprop="image" alt=""
                          src="<?= SITE_TEMPLATE_PATH . '/img/transparent.gif' ?>"
@@ -19,7 +19,7 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                          class="lazy rounded w-100" id="imageid">
                 </a>
             </div>
-            <div class="col-12 col-md-6 mb-2">
+            <div class="col-12 col-lg-6 mb-2">
                 <div class="form-row">
                     <? if (!empty($arResult['MORE_PHOTO'])) : ?>
                         <? foreach ($arResult['MORE_PHOTO'] as $key => $photo) : ?>
