@@ -19,7 +19,7 @@ if (!is_array($css) || !in_array("/bitrix/css/main/font-awesome.css", $css)) {
     $strReturn .= '<link href="' . CUtil::GetAdditionalFileURL("/bitrix/css/main/font-awesome.css") . '" type="text/css" rel="stylesheet" />' . "\n";
 }
 
-$strReturn .= '<nav aria-label="breadcrumb" class="" itemprop="http://schema.org/breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><ol class="breadcrumb">';
+$strReturn .= '<nav aria-label="breadcrumb" class="" itemscope itemtype="http://schema.org/BreadcrumbList"><ol class="breadcrumb">';
 
 $itemSize = count($arResult);
 for ($index = 0; $index < $itemSize; $index++) {
@@ -28,7 +28,7 @@ for ($index = 0; $index < $itemSize; $index++) {
 
     if ($arResult[$index]["LINK"] <> "" && $index != $itemSize - 1) {
         $strReturn .= '<li class="breadcrumb-item" id="bx_breadcrumb_' . $index . '" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a href="' . $arResult[$index]["LINK"] . '"><span itemprop="name">' . $title . '</span></a>
+                            <a itemprop="item" href="' . $arResult[$index]["LINK"] . '"><span itemprop="name">' . $title . '</span></a>
                             <meta itemprop="position" content="' . ($index + 1) . '" />
                        </li>';
     } else {

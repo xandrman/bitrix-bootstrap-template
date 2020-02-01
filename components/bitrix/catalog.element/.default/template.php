@@ -7,14 +7,16 @@ $name = !empty($arResult['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'])
 $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
 ?>
 
-<div class="form-row">
+<div itemscope itemtype="http://schema.org/Product" class="form-row">
     <div class="col-12 col-md-6">
         <div class="form-row">
             <div class="col-12 col-md-6 mb-2">
                 <a href="<?= $arResult['MORE_PHOTO'][0]['SRC'] ?: '#' ?>" class="d-block border rounded" id="bigimagea">
-                    <img src="<?= SITE_TEMPLATE_PATH . '/img/transparent.gif' ?>"
+                    <img itemprop="image" alt=""
+                         src="<?= SITE_TEMPLATE_PATH . '/img/transparent.gif' ?>"
                          data-original="<?= $arResult['MORE_PHOTO'][0]['SRC'] ?: (SITE_TEMPLATE_PATH . '/img/nophoto.png') ?>"
-                         alt="" class="lazy rounded w-100" id="imageid">
+                         content="<?= $arResult['MORE_PHOTO'][0]['SRC'] ?: (SITE_TEMPLATE_PATH . '/img/nophoto.png') ?>"
+                         class="lazy rounded w-100" id="imageid">
                 </a>
             </div>
             <div class="col-12 col-md-6 mb-2">
@@ -40,11 +42,13 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
     <div class="col-12 col-md-6 mb-2">
         <div class="form-row">
             <div class="col-12 col-lg-6 text-center mb-3">
+                <div itemprop="name" class="d-none" ><?= $arResult['NAME'] ?></div>
                 <? if (empty($price['PRINT_RATIO_PRICE'])) : ?>
                     <span><?= $arParams['MESS_NOT_AVAILABLE'] ?></span>
                 <? else : ?>
-                    <div class="text-center mb-3">
-                        <span class="display-4"><?= $price['PRINT_RATIO_PRICE'] ?></span>
+                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="text-center mb-3">
+                        <span itemprop="price" class="display-4"><?= $price['PRINT_RATIO_PRICE'] ?></span>
+                        <span itemprop="priceCurrency" class="d-none" ><?= $price["CURRENCY"] ?></span>
                     </div>
                     <div class="text-center mb-3">
                         <form action="<?= POST_FORM_ACTION_URI ?>" method="post">
@@ -84,7 +88,10 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
 
 
             <div class="col-12 col-lg-6 mb-2">
-                <div class="bg-light p-3 rounded">
+
+                <div class="bg-light p-3 mb-2 rounded">
+                    <h2>Характеристики</h2>
+
                     <? if ($arResult["PRODUCT"]["WEIGHT"]) : ?>
                         <div class="border-bottom-dotted">Вес, гр: <?= $arResult["PRODUCT"]["WEIGHT"] ?></div>
                     <? endif ?>
@@ -92,15 +99,35 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                     <? if (!empty($arResult['DISPLAY_PROPERTIES'])) : ?>
                         <? foreach ($arResult['DISPLAY_PROPERTIES'] as $property) : ?>
                             <div>
-                                <?= $property['NAME'] ?>:
-                                <?= (is_array($property['DISPLAY_VALUE'])
-                                    ? implode(' / ', $property['DISPLAY_VALUE'])
-                                    : $property['DISPLAY_VALUE']
-                                ) ?>
+                                <span><?= $property['NAME'] ?>:</span>
+                                <span <?= $property["CODE"] == "BRAND_REF" ? ' ' : '' ?>
+                                    <?= (is_array($property['DISPLAY_VALUE'])
+                                        ? implode(' / ', $property['DISPLAY_VALUE'])
+                                        : $property['DISPLAY_VALUE']
+                                    ) ?>
+                                </span>
                             </div>
                         <? endforeach ?>
                     <? endif ?>
                 </div>
+
+                <div class="bg-light p-3 rounded">
+                    <h2>Описание</h2>
+                    <? if ($USER->IsAdmin()) : ?>
+                        <form action="/operators/editProduct.php" method="post">
+                            <div class="form-group">
+                                <input type="hidden" name="ID" value="<?= $arResult["ID"] ?>">
+                                <textarea name="DETAIL_TEXT" id="" class="form-control"><?= $arResult["DETAIL_TEXT"] ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-dark" type="submit" id="button-submit">Сохранить</button>
+                            </div>
+                        </form>
+                    <? else : ?>
+                        <span itemprop="description"><?= $arResult["DETAIL_TEXT"] ?></span>
+                    <? endif ?>
+                </div>
+
             </div>
         </div>
     </div>
