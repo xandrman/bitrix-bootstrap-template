@@ -100,7 +100,7 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                         <? foreach ($arResult['DISPLAY_PROPERTIES'] as $property) : ?>
                             <div>
                                 <span><?= $property['NAME'] ?>:</span>
-                                <span <?= $property["CODE"] == "BRAND_REF" ? ' ' : '' ?>
+                                <span>
                                     <?= (is_array($property['DISPLAY_VALUE'])
                                         ? implode(' / ', $property['DISPLAY_VALUE'])
                                         : $property['DISPLAY_VALUE']
