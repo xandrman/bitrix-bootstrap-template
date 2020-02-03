@@ -43,12 +43,18 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
         <div class="form-row">
             <div class="col-12 col-lg-6 text-center mb-3">
                 <div itemprop="name" class="d-none" ><?= $arResult['NAME'] ?></div>
+                <meta itemprop="sku" content="<?= $arResult["ORIGINAL_PARAMETERS"]["ELEMENT_CODE"] ?>">
                 <? if (empty($price['PRINT_RATIO_PRICE'])) : ?>
                     <span><?= $arParams['MESS_NOT_AVAILABLE'] ?></span>
                 <? else : ?>
                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="text-center mb-3">
-                        <span itemprop="price" class="display-4"><?= $price['PRINT_RATIO_PRICE'] ?></span>
-                        <span itemprop="priceCurrency" class="d-none" ><?= $price["CURRENCY"] ?></span>
+                        <meta itemprop="price" content="<?= $price["PRICE"] ?>"/>
+                        <meta itemprop="priceCurrency" content="<?= $price["CURRENCY"] ?>"/>
+                        <meta itemprop="availability"
+                              content="<?= $arResult["PRODUCT"]["QUANTITY"] ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock'?>" />
+                        <span class="display-4"><?= $price['PRINT_RATIO_PRICE'] ?></span>
+                        <meta itemprop="priceValidUntil" content="2029-12-31">
+                        <meta itemprop="url" content="<?= $arResult["DETAIL_PAGE_URL"] ?>">
                     </div>
                     <div class="text-center mb-3">
                         <form action="<?= POST_FORM_ACTION_URI ?>" method="post">
