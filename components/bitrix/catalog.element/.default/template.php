@@ -93,9 +93,8 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
             </div>
 
 
-            <div class="col-12 col-lg-6 mb-2">
-
-                <div class="bg-light p-3 mb-2 rounded">
+            <div class="col-12 col-lg-6 mb-3">
+                <div class="bg-light p-3 rounded h-100">
                     <h2>Характеристики</h2>
 
                     <? if ($arResult["PRODUCT"]["WEIGHT"]) : ?>
@@ -116,8 +115,10 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                         <? endforeach ?>
                     <? endif ?>
                 </div>
+            </div>
 
-                <div class="bg-light p-3 rounded">
+            <div class="col-12 mb-3">
+                <div class="p-3 rounded">
                     <h2>Описание</h2>
                     <? if ($USER->IsAdmin()) : ?>
                         <form action="/operators/editProduct.php" method="post">
@@ -133,7 +134,6 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                         <span itemprop="description"><?= $arResult["DETAIL_TEXT"] ?></span>
                     <? endif ?>
                 </div>
-
             </div>
         </div>
     </div>
