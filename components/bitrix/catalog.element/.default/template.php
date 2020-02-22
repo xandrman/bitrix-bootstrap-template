@@ -54,7 +54,7 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                               content="<?= $arResult["PRODUCT"]["QUANTITY"] ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock'?>" />
                         <span class="display-4"><?= $price['PRINT_RATIO_PRICE'] ?></span>
                         <meta itemprop="priceValidUntil" content="2029-12-31">
-                        <meta itemprop="url" content="<?= $arResult["DETAIL_PAGE_URL"] ?>">
+                        <link itemprop="url" content="<?= $arResult["DETAIL_PAGE_URL"] ?>">
                     </div>
                     <div class="text-center mb-3">
                         <form action="<?= POST_FORM_ACTION_URI ?>" method="post">
