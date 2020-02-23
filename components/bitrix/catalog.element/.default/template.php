@@ -114,6 +114,12 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                             </div>
                         <? endforeach ?>
                     <? endif ?>
+                    <? if (!empty($arResult['DISPLAY_PROPERTIES']['BRAND_REF'])) : ?>
+                        <div itemprop="brand" itemscope itemtype="http://schema.org/Brand" class="d-none">
+                           <meta itemprop="name"
+                                 content="<?= $arResult['DISPLAY_PROPERTIES']['BRAND_REF']['DISPLAY_VALUE'] ?>"/>
+                        </div>
+                    <? endif ?>
                 </div>
             </div>
 
@@ -124,7 +130,8 @@ $price = $arResult['ITEM_PRICES'][$arResult['ITEM_PRICE_SELECTED']];
                         <form action="/operators/editProduct.php" method="post">
                             <div class="form-group">
                                 <input type="hidden" name="ID" value="<?= $arResult["ID"] ?>">
-                                <textarea name="DETAIL_TEXT" id="" class="form-control"><?= $arResult["DETAIL_TEXT"] ?></textarea>
+                                <textarea name="DETAIL_TEXT" id=""
+                                          class="form-control" rows="10"><?= $arResult["DETAIL_TEXT"] ?></textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark" type="submit" id="button-submit">Сохранить</button>
