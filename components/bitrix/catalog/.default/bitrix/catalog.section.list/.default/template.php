@@ -11,8 +11,8 @@ foreach ($arResult['SECTIONS'] as $arSection) {
 }
 ?>
 
-<? if (count($arResult['SECTIONS'])) : ?>
-    <div class="form-row mb-3">
+<div class="form-row mb-3">
+    <? if (count($arResult['SECTIONS'])) : ?>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-2">
             <div class="bg-light rounded p-2 h-100">
                 <?
@@ -42,6 +42,10 @@ foreach ($arResult['SECTIONS'] as $arSection) {
                 </ul>
             </div>
         </div>
-    </div>
-<? endif; ?>
+    <? endif; ?>
 
+    <div class="col col-lg-8 col-xl-6">
+        <?= $arResult["SECTION"]["DESCRIPTION"] ?>
+    </div>
+
+</div>
