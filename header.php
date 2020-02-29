@@ -36,6 +36,19 @@ use Bitrix\Main\Page\Asset; ?>
         html {
             font-size: 100%;
         }
+        .btn-default {
+            color: #fff;
+            background-color: #f58e72;
+            border-color: #f58e72;
+        }
+        .btn-default:hover {
+            color: #fff;
+            background-color: #f2714e;
+            border-color: #f26842;
+        }
+        .btn-default:focus {
+            box-shadow: 0 0 0 0.2rem rgba(247,159,135,.5);
+        }
     </style>
 </head>
 <body class="container-fluid">
