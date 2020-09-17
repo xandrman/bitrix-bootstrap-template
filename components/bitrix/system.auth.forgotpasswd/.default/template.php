@@ -25,7 +25,7 @@ ShowMessage($arParams["~AUTH_RESULT"]);
                        class="form-control" required>
             </div>
             <input type="hidden" name="USER_EMAIL"/>
-            <? if ($arResult["USE_CAPTCHA"] == "Y") : ?>
+            <? if ($arResult["USE_CAPTCHA"] == "1") : ?>
                 <div class="form-group">
                     <input type="hidden" name="captcha_sid" value="<?= $arResult["CAPTCHA_CODE"] ?>"/>
                     <label for="captcha"><?= GetMessage("system_auth_captcha") ?></label>
